@@ -1,8 +1,8 @@
 const config = {
   app: {
     port: process.env.PORT || 3000,
-    project: 'node-express-mysql-sequelize-demo-app',
-    url: 'http://localhost:3000/api',
+    project: 'norsa',
+    url: 'https://norsabackend.herokuapp.com/api',
     secret: 'asdfasfasdfasdafsdf231243243234234234234234234234',
   },
   db: {
