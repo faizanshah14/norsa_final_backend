@@ -16,16 +16,17 @@ const passportInitialize = require('./passport/passport');
 // };
 let server; //eslint-disable-line
 let httpServer; //eslint-disable-line
-server = require('http').createServer(app); // eslint-disable-line
-if (process.env.NODE_ENV !== 'production') {
-  server = require('http').createServer(app); // eslint-disable-line
-} else {
-  server = require('https').createServer(app); //eslint-disable-line
-  httpServer = http.createServer((req, res) => {
-    res.writeHead(301, { 'Location': 'https://' + req.headers['host'] + req.url }); // eslint-disable-line
-    res.end();
-  }).listen(80);
-}
+const port = process.env.PORT || 3000;
+server = require( 'http' ).createServer( app ).listen( port ); // eslint-disable-line
+// if (process.env.NODE_ENV !== 'production') {
+  // server = require('http').createServer(app); // eslint-disable-line
+// } else {
+//   server = require('https').createServer(app); //eslint-disable-line
+//   httpServer = http.createServer((req, res) => {
+//     res.writeHead(301, { 'Location': 'https://' + req.headers['host'] + req.url }); // eslint-disable-line
+//     res.end();
+//   }).listen(80);
+// }
 app.logger = logger;
 app.options('*', cors());
 app.use(cors());
@@ -49,12 +50,12 @@ passportInitialize(passport, user);
 app.use(authMiddleWare);
 routeInitialize(app);
 
-if (process.env.NODE_ENV === 'development') {
-  server.listen(config.app.port, () => {
-    console.log('Server listening at port %d', config.app.port);
-  });
-} else {
-  server.listen(config.app.port, () => {
-    console.log('SSL server is running at ', config.app.port);
-  });
-}
+// if (process.env.NODE_ENV === 'development') {
+//   server.listen(config.app.port, () => {
+//     console.log('Server listening at port %d', config.app.port);
+//   });
+// } else {
+//   server.listen(config.app.port, () => {
+//     console.log('SSL server is running at ', config.app.port);
+//   });
+// }
