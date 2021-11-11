@@ -11,11 +11,11 @@ module.exports = function (sequelize) {
       allowNull: false
     },
     Date: {
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
       allowNull: false
     },
     ExpiryDate: {
-      type: Sequelize.DATE,
+      type: Sequelize.DATEONLY,
       allowNull: false
     },
     FirstName: {
