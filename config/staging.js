@@ -7,8 +7,8 @@ const config = {
     },
     db: {
       host: 'localhost',
-      database: 'node-demo-app',
-      username: '',
+      database: 'norsa',
+      username: 'root',
       password: '',
       dialect: 'mysql',
       port: 3306,

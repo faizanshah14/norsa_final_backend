@@ -133,7 +133,7 @@ module.exports = function (passport, User) {
       };
       const appSecret = config.app.secret;
       const accessToken = jwt.sign(payload, appSecret, {
-        expiresIn: 60 * 30 // expires in 30 min
+        expiresIn: 60 * 1000 // expires in 30 min
       });
       const refreshToken = jwt.sign(payload, appSecret, {
         expiresIn: '30d' // expires in 30 min
