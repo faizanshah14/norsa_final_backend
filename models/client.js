@@ -10,6 +10,14 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING(45),
       allowNull: false
     },
+    Date: {
+      type: Sequelize.DATE,
+      allowNull: false
+    },
+    ExpiryDate: {
+      type: Sequelize.DATE,
+      allowNull: false
+    },
     FirstName: {
       type: Sequelize.STRING(45),
       allowNull: false
