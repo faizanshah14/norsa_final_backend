@@ -10,11 +10,23 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING(45),
       allowNull: false
     },
+    Date: {
+      type: Sequelize.DATEONLY,
+      allowNull: false
+    },
+    ExpiryDate: {
+      type: Sequelize.DATEONLY,
+      allowNull: false
+    },
     FirstName: {
       type: Sequelize.STRING(45),
       allowNull: false
     },
     LastName: {
+      type: Sequelize.STRING(45),
+      allowNull: false
+    },
+    idCard: {
       type: Sequelize.STRING(45),
       allowNull: false
     },
@@ -48,6 +60,14 @@ module.exports = function (sequelize) {
     },
     Dealer_id: {
       type: Sequelize.STRING(45),
+      allowNull: true
+    },
+    SourceOfIncome: {
+      type: Sequelize.STRING(500),
+      allowNull: true
+    },
+    RecievedCreditInPast: {
+      type: Sequelize.INTEGER,
       allowNull: true
     }
   }, {

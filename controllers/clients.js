@@ -1,10 +1,34 @@
 const models = require('../models/index');
 
+const express = require('express')
+
+
+
+
 exports.getAllClients = (req, res) => {
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
   const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
     .findAll({ limit, offset })
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while retrieving All clients.',
+      });
+    });
+};
+
+exports.getAllActiveClients = (req, res) => {
+  const limit = req.params.limit !== undefined ? req.params.limit : 10;
+  const offset = req.params.offset !== undefined ? req.params.limit : 0;
+  models.client
+    .findAll({ where : {
+      Status : 1
+    } })
     .then((data) => {
       console.log(data);
       res.json(data);

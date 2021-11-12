@@ -4,6 +4,9 @@ const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 const reduceErrorMessage = require('../utils/reduceErrorMessage');
 const whiteList = [
+  '/api/public/clients/upsertClient',
+  '/api/public/clients/getActiveClientList',
+  '/api/public/clientProfilePicture/createImage',
   '/api/auth/signup',
   '/api/auth/login',
   '/api/auth/confirm-email',
