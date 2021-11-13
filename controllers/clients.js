@@ -31,6 +31,10 @@ exports.getNextK_Id = (req, res) => {
         if (item.id.includes("k") || item.id.includes("K"))
           return item
       })
+      if (k_Ids.length == 0) {
+        res.json({ id: "K-0001" })
+        return;
+      }
       let k_Id = k_Ids[k_Ids.length - 1]
       let nextId = parseInt(k_Id.id.substring(2, k_Id.id.length)) + 1
       if (nextId < 10) {
@@ -63,6 +67,10 @@ exports.getNextD_Id = (req, res) => {
         if (item.id.includes("d") || item.id.includes("D"))
           return item
       })
+      if (D_Ids.length == 0) {
+        res.json({ id: "K-0001" })
+        return;
+      }
       let D_Id = D_Ids[D_Ids.length - 1]
       let nextId = parseInt(D_Id.id.substring(2, D_Id.id.length)) + 1
       if (nextId < 10) {
@@ -98,7 +106,7 @@ exports.getAllActiveClients = (req, res) => {
     .then((data) => {
       console.log(data);
       data = data.filter((item) => {
-        if(item.id.includes("d") || item.id.includes("D")){
+        if (item.id.includes("d") || item.id.includes("D")) {
           return item
         }
       })
