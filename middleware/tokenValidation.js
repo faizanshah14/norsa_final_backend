@@ -6,6 +6,7 @@ const reduceErrorMessage = require('../utils/reduceErrorMessage');
 const whiteList = [
   '/api/public/clients/upsertClient',
   '/api/public/clients/getActiveClientList',
+  '/api/public/clients/getNextK_Id',
   '/api/public/clientProfilePicture/createImage',
   '/api/auth/signup',
   '/api/auth/login',

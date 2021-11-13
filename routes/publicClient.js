@@ -6,6 +6,7 @@ const multer = require('multer')
 
 
 router.post('/upsertClient', clients.upsertClient);
-module.exports = router;
-
 router.get('/getActiveClientList', clients.getAllActiveClients)
+router.get('/getNextK_Id', clients.getNextK_Id);
+
+module.exports = router;

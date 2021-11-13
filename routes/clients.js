@@ -7,6 +7,7 @@ const multer = require('multer')
   //multer({ storage }).single('example'),
 router.get('/getAllClients/:limit&:offset', clients.getAllClients);
 router.get('/getAllClients', clients.getAllClients);
+router.get('/getNextD_Id', clients.getNextD_Id);
 router.get('/getAllActiveClients', clients.getAllActiveClients);
 router.get('/getClientById/:id', clients.getClientById);
 router.post('/createClient', clients.createClient);

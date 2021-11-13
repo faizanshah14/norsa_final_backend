@@ -22,15 +22,86 @@ exports.getAllClients = (req, res) => {
     });
 };
 
+exports.getNextK_Id = (req, res) => {
+  models.client
+    .findAll({ attributes: ['id'] })
+    .then((data) => {
+      console.log(data);
+      let k_Ids = data.filter((item, index) => {
+        if (item.id.includes("k") || item.id.includes("K"))
+          return item
+      })
+      let k_Id = k_Ids[k_Ids.length - 1]
+      let nextId = parseInt(k_Id.id.substring(2, k_Id.id.length)) + 1
+      if (nextId < 10) {
+        nextId = "K-000" + nextId
+      }
+      else if (nextId < 100) {
+        nextId = "K-00" + nextId
+      }
+      else if (nextId < 1000) {
+        nextId = "K-0" + nextId
+      }
+      else {
+        nextId = "K-" + nextId
+      }
+      res.json({ id: nextId })
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while retrieving All clients.',
+      });
+    });
+};
+exports.getNextD_Id = (req, res) => {
+  models.client
+    .findAll({ attributes: ['id'] })
+    .then((data) => {
+      console.log(data);
+      let D_Ids = data.filter((item, index) => {
+        if (item.id.includes("d") || item.id.includes("D"))
+          return item
+      })
+      let D_Id = D_Ids[D_Ids.length - 1]
+      let nextId = parseInt(D_Id.id.substring(2, D_Id.id.length)) + 1
+      if (nextId < 10) {
+        nextId = "D-000" + nextId
+      }
+      else if (nextId < 100) {
+        nextId = "D-00" + nextId
+      }
+      else if (nextId < 1000) {
+        nextId = "D-0" + nextId
+      }
+      else {
+        nextId = "D-" + nextId
+      }
+      res.json({ id: nextId })
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred while retrieving All clients.',
+      });
+    });
+};
 exports.getAllActiveClients = (req, res) => {
   const limit = req.params.limit !== undefined ? req.params.limit : 10;
   const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
-    .findAll({ where : {
-      Status : 1
-    } })
+    .findAll({
+      where: {
+        Status: 1
+      }
+    })
     .then((data) => {
       console.log(data);
+      data = data.filter((item) => {
+        if(item.id.includes("d") || item.id.includes("D")){
+          return item
+        }
+      })
       res.json(data);
     })
     .catch((err) => {
