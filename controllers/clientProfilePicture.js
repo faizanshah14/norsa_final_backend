@@ -24,27 +24,31 @@ exports.getImageById = (req, res) => {
 };
 
 exports.getImageByClientId = (req, res) => {
+//  res.json({id : req.params.id})
   models.clientProfilePicture
-    .findAll({
-      where: {
-        Client_id: req.params.Client_id
+    .find({
+      where : {
+        Client_id : `${req.params.id}`
       }
     })
     .then((data) => {
-      const file = path.join(__dirname,"../public/images/",data.filePath);
-      res.download(file);
-      // res.sendFile('./public/images/'+ data.filePath)
+      console.log(data);
+      // const file = path.join(__dirname,"../public/images/",data.filePath);
+      // res.sendFile(file); // Set disposition and send it.
+      res.json(data)
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || 'Some error occurred while retrieving image of this client.' + req.params.Client_id,
+          err.message || 'Some error occurred while retrieving CLient Record .',
       });
     });
 };
 
 
 exports.createImage = (req, res) => {
+  console.log("id is "+ req.file)
+
   if (!req.body.id) {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;

@@ -54,6 +54,10 @@ module.exports = function (sequelize) {
       type: Sequelize.STRING(45),
       allowNull: true
     },
+    address : {
+      type : Sequelize.STRING(500),
+      allowNull : true
+    },
     MaxBorrowAmount: {
       type: Sequelize.INTEGER,
       allowNull: true

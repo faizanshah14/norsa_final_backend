@@ -7,6 +7,11 @@ const logger = require('./utils/logger');
 const authMiddleWare = require('./middleware/tokenValidation');
 const dbInitialize = require('./services/dbInitialize');
 const http = require('http');
+var path = require('path');
+var express = require('express');
+var cookieParser = require('cookie-parser');
+
+
 const routeInitialize = require('./routes');
 const passportInitialize = require('./passport/passport');
 
@@ -42,6 +47,10 @@ app.use(require('body-parser').urlencoded({ limit: '50mb', extended: true }));
 app.use(require('body-parser').json({ limit: '50mb' }));
 app.use(require('express-session')({ secret: config.app.secret, resave: true, saveUninitialized: true }));
 app.use(require('cookie-parser')());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use('/static',express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 dbInitialize(app);

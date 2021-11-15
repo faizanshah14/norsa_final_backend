@@ -18,7 +18,7 @@ const whiteList = [
   '/api/auth/changepassword',
   '/api/auth/verificationemail',
   '/api/auth/refreshsession',
-];
+  ];
 const adminApis = [
   '/admin',
 ];
