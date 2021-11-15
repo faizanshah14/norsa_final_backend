@@ -6,7 +6,7 @@ const express = require('express')
 
 
 exports.getAllClients = (req, res) => {
-  const limit = req.params.limit !== undefined ? req.params.limit : 10;
+  const limit = req.params.limit !== undefined ? req.params.limit : 10000;
   const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
     .findAll({ limit, offset })
