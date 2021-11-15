@@ -68,7 +68,7 @@ exports.getNextD_Id = (req, res) => {
           return item
       })
       if (D_Ids.length == 0) {
-        res.json({ id: "K-0001" })
+        res.json({ id: "D-0001" })
         return;
       }
       let D_Id = D_Ids[D_Ids.length - 1]
@@ -99,6 +99,7 @@ exports.getAllActiveClients = (req, res) => {
   const offset = req.params.offset !== undefined ? req.params.limit : 0;
   models.client
     .findAll({
+
       where: {
         Status: 1
       }
@@ -107,9 +108,10 @@ exports.getAllActiveClients = (req, res) => {
       console.log(data);
       data = data.filter((item) => {
         if (item.id.includes("d") || item.id.includes("D")) {
-          return item
+          return item.Code
         }
       })
+      data = data.map((item) => { return { id: item.id, Code: item.Code } })
       res.json(data);
     })
     .catch((err) => {

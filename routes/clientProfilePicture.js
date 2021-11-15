@@ -14,6 +14,6 @@ const upload = require("../middleware/upload");
     
 //   })
 router.get('/getImageById/:id', clientProfilePicture.getImageById);
-router.get('/getImageByClientId/:Client_id', clientProfilePicture.getImageByClientId);
+router.get('/getImageByClientId/:id', clientProfilePicture.getImageByClientId);
 router.post('/createImage',upload.single("file"),clientProfilePicture.createImage)
 module.exports = router;
